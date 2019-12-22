@@ -78,7 +78,7 @@ public class FileService {
                 this.gerarExtratoVendas(vendedores, clientes, vendas);
                 response = ExtratoResponse.builder().qtdeClientes((long) clientes.size())
                                                     .qtdeVendedores((long) vendedores.size())
-                                                    .maiorVenda(this.getIdMaiorVenda(vendas))
+                                                    .idMaiorVenda(this.getIdMaiorVenda(vendas))
                                                     .piorVendedor(this.getPiorVendedor(vendas))
                                                     .build();
             }
