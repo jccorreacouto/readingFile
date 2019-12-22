@@ -1,5 +1,5 @@
 # Reading File
-Este projeto permite a leitura de arquivos com extensão .csv localizados no diretório ``/data/in`` do usuário logado (HOMEPATH), 
+Este projeto permite a leitura de arquivos com extensão .csv localizados no diretório ``/data/in`` do usuário logado (``HOMEPATH``), 
 faz a interpretação dos dados e gera, no diretório ``/data/out`` ao final da execução, um arquivo de texto contendo as informações do extrato de vendas,
 tendo por parâmetros de saída as informações de Vendedor, Cliente e Vendas.
 
