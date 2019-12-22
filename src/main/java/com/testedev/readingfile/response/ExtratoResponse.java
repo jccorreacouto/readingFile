@@ -13,6 +13,6 @@ public class ExtratoResponse {
 
     private Long qtdeClientes;
     private Long qtdeVendedores;
-    private Long maiorVenda;
+    private Long idMaiorVenda;
     private String piorVendedor;
 }

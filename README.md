@@ -1,6 +1,6 @@
 # Reading File
-Este projeto permite a leitura de arquivos com extensão .csv localizados no diretório /data/in do usuário logado (HOMEPATH), 
-faz a interpretação dos dados e gera, ao final da execução, um arquivo de texto contendo as informações do extrato de vendas,
+Este projeto permite a leitura de arquivos com extensão .csv localizados no diretório ``/data/in`` do usuário logado (HOMEPATH), 
+faz a interpretação dos dados e gera, no diretório ``/data/out`` ao final da execução, um arquivo de texto contendo as informações do extrato de vendas,
 tendo por parâmetros de saída as informações de Vendedor, Cliente e Vendas.
 
 ### Características
@@ -20,15 +20,15 @@ para a [localhost](http://localhost:8080/vendas/extrato) onde retorna um *JSON* 
 ```
 {
     "qtdeClientes": Long,
-    "qtdeVendedores":Long,
-    "maiorVenda": Long,
+    "qtdeVendedores": Long,
+    "idMaiorVenda": Long,
     "piorVendedor": String
 }
 ```
 
 ### Possibilidade de melhorias
-1. Criar o arquivo ``application.properties`` e definir nele as variáveis de ambiente:
-    * Diretorio de entrada de arquivos
+1. Criar o arquivo ``application.properties`` e definir nele as variáveis de ambiente para:
+    * Diretório de entrada de arquivos
     * Diretório de saída de arquivos
     * Intervalo de execução do scheduling  
 
