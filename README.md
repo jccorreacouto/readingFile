@@ -3,7 +3,7 @@ Este projeto permite a leitura de arquivos com extensão .csv localizados no dir
 faz a interpretação dos dados e gera, ao final da execução, um arquivo de texto contendo as informações do extrato de vendas,
 tendo por parâmetros de saída as informações de Vendedor, Cliente e Vendas.
 
-### Cadacterísticas
+### Características
 ##### No projeto foi utilizado:
 
 * Linguagem de Programação Java, versão 8 (1.8.0_231), para desenvolvimento do código fonte.
