@@ -74,7 +74,7 @@ public class FileService {
                 }
             }
 
-            if (arquivos.length > 0) {
+            if (vendedores.size() > 0 || clientes.size() > 0 || vendas.size() > 0) {
                 this.gerarExtratoVendas(vendedores, clientes, vendas);
                 response = ExtratoResponse.builder().qtdeClientes((long) clientes.size())
                                                     .qtdeVendedores((long) vendedores.size())
@@ -88,9 +88,10 @@ public class FileService {
             log.error("ERRO AO TENTAR LER DIRETÓRIO DE ENTRADA.");
             Utils.criarDiretorioEntrada();
             Utils.criarDiretorioSaida();
+            log.info("OS DIRETÓRIOS DE ENTRADA E SAÍDA DE ARQUIVÓS FORAM CRIADOS.");
 
         } catch (Throwable e) {
-            log.error(e.getMessage());
+            log.error("EXCEÇÃO NÃO TRATADA: " + e.getMessage());
         }
 
         return Objects.isNull(response) ? ExtratoResponse.builder().build() : response;

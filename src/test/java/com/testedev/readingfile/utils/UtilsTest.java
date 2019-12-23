@@ -27,7 +27,7 @@ public class UtilsTest {
 
     @Test
     public void formatoArquivoInvalido() {
-        Assert.assertFalse(Utils.isFormatoValido(".txt"));
+        Assert.assertFalse(Utils.isFormatoValido(".dat"));
     }
 
     @Test
@@ -35,4 +35,5 @@ public class UtilsTest {
         PrintWriter saida = Utils.getImprimirSaida();
         String teste = saida.toString();
     }
+
 }
