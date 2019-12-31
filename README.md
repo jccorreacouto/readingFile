@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/jccorreacouto/readingfile.svg?branch=master)](https://travis-ci.com/jccorreacouto/readingfile)
+
 # Reading File
 Este projeto permite a leitura de arquivos com extensão ``.csv`` localizados no diretório ``/data/in`` do usuário logado (``HOMEPATH``), 
 faz a interpretação dos dados e gera, no diretório ``/data/out`` ao final da execução, um arquivo de texto contendo o resultado das informações
