@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/jccorreacouto/readingfile.svg?branch=master)](https://travis-ci.com/jccorreacouto/readingfile)
+[![Coverage Status](https://coveralls.io/repos/github/jccorreacouto/readingfile/badge.svg?branch=master)](https://coveralls.io/github/jccorreacouto/readingfile?branch=master)
 
 # Reading File
 Este projeto permite a leitura de arquivos com extensão ``.csv`` localizados no diretório ``/data/in`` do usuário logado (``HOMEPATH``), 
