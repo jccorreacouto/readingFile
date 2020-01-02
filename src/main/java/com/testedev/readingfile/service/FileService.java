@@ -88,7 +88,7 @@ public class FileService {
             log.error("ERRO AO TENTAR LER DIRETÓRIO DE ENTRADA.");
             Utils.criarDiretorioEntrada();
             Utils.criarDiretorioSaida();
-            log.info("OS DIRETÓRIOS DE ENTRADA E SAÍDA DE ARQUIVÓS FORAM CRIADOS.");
+            log.info("OS DIRETÓRIOS DE ENTRADA E SAÍDA DE ARQUIVOS FORAM CRIADOS.");
 
         } catch (Throwable e) {
             log.error("EXCEÇÃO NÃO TRATADA: " + e.getMessage());
