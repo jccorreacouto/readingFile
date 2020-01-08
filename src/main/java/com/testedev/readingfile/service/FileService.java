@@ -134,10 +134,7 @@ public class FileService {
         List<MaiorVendaDTO> maioresVendas = new ArrayList<MaiorVendaDTO>();
         vendas.forEach(venda -> {
             if(Objects.nonNull(venda)) {
-                BigDecimal totalVenda = BigDecimal.ZERO;
-                for (ItemVendaDTO item : venda.getItems()) {
-                    totalVenda = totalVenda.add(item.getPreco());
-                }
+                BigDecimal totalVenda = this.getTotalVenda(venda);
                 maioresVendas.add(MaiorVendaDTO.builder().idVenda(venda.getIdVenda()).valorTotal(totalVenda).build());
             }
         });
@@ -149,14 +146,15 @@ public class FileService {
         List<PiorVendedorDTO> pioresVendedores = new ArrayList<PiorVendedorDTO>();
         vendas.forEach(venda -> {
             if(Objects.nonNull(venda)) {
-                BigDecimal totalVenda = BigDecimal.ZERO;
-                for (ItemVendaDTO item : venda.getItems()) {
-                    totalVenda = totalVenda.add(item.getPreco());
-                }
+                BigDecimal totalVenda = this.getTotalVenda(venda);
                 pioresVendedores.add(PiorVendedorDTO.builder().nome(venda.getVendedor()).valorTotal(totalVenda).build());
             }
         });
         pioresVendedores.sort(Comparator.comparing(PiorVendedorDTO::getValorTotal));
         return pioresVendedores.stream().findFirst().get().getNome();
+    }
+
+    private BigDecimal getTotalVenda(VendaDTO venda) {
+        return venda.getItems().stream().map(item -> item.getPreco()).reduce(BigDecimal::add).get();
     }
 }
