@@ -13,19 +13,27 @@ Neste primeiro momento, o arquivo de entrada contém dados de Vendedores, de Cli
 * Framework Spring Boot (versão 2.2.2.RELEASE) e suas bibliotecas, para publicação e gerenciamento da aplicação.
 * Junit 4, para criação dos testes unitários.
 
+### Subindo o projeto
+Para iniciar o container é necessário que o comando ``mvn spring-boot:run`` seja executado na raiz do projeto.
+
+### Arquivo exemplo
+````text
+001ç1234567891234çPedroç50000
+001ç3245678865434çPauloç40000.99
+002ç2345675434544345çJose da SilvaçRural
+002ç2345675433444345çEduardo PereiraçRural
+003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro
+003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çPaulo
+````
+
 ### Notas importantes
 1. Caso os diretórios de entrada e saída não estejam criados, ou tenham sido apagados, a aplicação irá criá-los.
-2. A aplicação, após iniciado o container, está configurada para rodar a cada 30 segundos (ou **30000 milisegundos**), 
-tal configuração está anotada na classe [FileService](/src/main/java/com/testedev/readingfile/service/FileService.java), 
-linha 40, com a anotação do Spring **@Scheduled**.
+2. A aplicação, após iniciado o container, está configurada para rodar a cada 30 segundos, por uma expressão **CRON** localizada no arquivo ``application.yml``.
+3. Os diretorios de entrada e saída estão declarados no arquivo ``application.yml``.
 
 ### Possibilidades de melhorias
-1. Criar no arquivo ``application.properties`` as variáveis do sistema para:
-    * Diretório de entrada de arquivos
-    * Diretório de saída de arquivos
-    * Intervalo de execução do scheduling  
-2. Alterar o caractere de escape de ``ç`` para ``;``, evitando assim possíveis tratamentos incorretos nas strings.
-3. Tratar os métodos privados (``Code Smell``) para ampliar a cobertura dos testes unitários.
+1. Alterar o caractere de escape de ``ç`` para ``;``, evitando assim possíveis tratamentos incorretos nas strings.
+2. Tratar os métodos privados (``Code Smell``) para melhorar a cobertura dos testes unitários.
 
 ### Documentação referência
 

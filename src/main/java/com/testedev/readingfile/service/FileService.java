@@ -33,7 +33,7 @@ public class FileService {
     @Autowired
     private VendaMapper vendaMapper;
 
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(cron = "${spring.application.scheduled.cron}")
     public ExtratoResponse processarExtratoVendas() {
 
         ExtratoResponse response = null;
