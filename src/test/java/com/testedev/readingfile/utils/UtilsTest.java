@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 public class UtilsTest {
 
     @Test
-    public void existeDiretorioEntrada() {
+    public void testExisteDiretorioEntrada() {
         File file = new File(Utils.getDiretorioEntrata());
         Assert.assertTrue(file.isDirectory());
     }

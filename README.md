@@ -29,6 +29,7 @@ Para iniciar o container é necessário que o comando ``mvn spring-boot:run`` se
 ### Notas importantes
 1. Caso os diretórios de entrada e saída não estejam criados, ou tenham sido apagados, a aplicação irá criá-los.
 2. A aplicação, após iniciado o container, está configurada para rodar a cada 30 segundos, por uma expressão **CRON** localizada no arquivo ``application.yml``.
+3. Os diretorios de entrada e saída estão declarados no arquivo ``application.yml``.
 
 ### Possibilidades de melhorias
 1. Alterar o caractere de escape de ``ç`` para ``;``, evitando assim possíveis tratamentos incorretos nas strings.
