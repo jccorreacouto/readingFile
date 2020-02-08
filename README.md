@@ -13,6 +13,12 @@ Neste primeiro momento, o arquivo de entrada contém dados de Vendedores, de Cli
 * Framework Spring Boot (versão 2.2.2.RELEASE) e suas bibliotecas, para publicação e gerenciamento da aplicação.
 * Junit 4, para criação dos testes unitários.
 
+### Subindo o projeto
+Para iniciar o container é necessário que o comando ``mvn spring-boot:run`` seja executado na raiz do projeto.
+
+### Cenário
+* [descricao-projeto.pdf](/descricao-projeto.pdf)
+
 ### Notas importantes
 1. Caso os diretórios de entrada e saída não estejam criados, ou tenham sido apagados, a aplicação irá criá-los.
 2. A aplicação, após iniciado o container, está configurada para rodar a cada 30 segundos (ou **30000 milisegundos**), 
