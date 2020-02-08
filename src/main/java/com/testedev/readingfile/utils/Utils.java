@@ -12,9 +12,9 @@ import java.util.Arrays;
 public class Utils {
 
     private static final String BARRA = File.separator;
-    private static final String DIR_DATA = Diretorio.DATA.getDiretorio();
-    private static final String DIR_IN = Diretorio.IN.getDiretorio();
-    private static final String DIR_OUT = Diretorio.OUT.getDiretorio();
+    private static final String DIR_DATA = Diretorio.DATA.toString();
+    private static final String DIR_IN = Diretorio.IN.toString();
+    private static final String DIR_OUT = Diretorio.OUT.toString();
 
     public static String getDiretorioEntrata() {
         return System.getProperty("user.home").concat(BARRA).concat(DIR_DATA)

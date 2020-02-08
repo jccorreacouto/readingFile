@@ -1,0 +1,9 @@
+spring:
+  application:
+    scheduled:
+      cron: "0/30 * * * * *" # executa a cada 30 segundos
+
+  diretorio:
+    data: data
+    in: in
+    out: out
