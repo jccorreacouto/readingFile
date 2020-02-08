@@ -5,6 +5,9 @@ import com.testedev.readingfile.domain.enumeration.Diretorio;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 public class Utils {
 
@@ -23,7 +26,7 @@ public class Utils {
     }
 
     public static boolean isFormatoValido(String nome) {
-        return nome.endsWith(".csv");
+        return nome.endsWith(".dat");
     }
 
     public static String getDiretorioSaida() {
@@ -34,7 +37,10 @@ public class Utils {
     public static PrintWriter getImprimirSaida() {
         PrintWriter imprimir = null;
         try {
-            FileWriter arquivo = new FileWriter(new File(getDiretorioSaida().concat("extrato-vendas.txt")));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy-HH-mm-ss");
+            String dataAgora = LocalDateTime.now().format(formatter);
+            File file = new File(getDiretorioSaida().concat(dataAgora).concat("_vendas.done.dat"));
+            FileWriter arquivo = new FileWriter(file);
             imprimir = new PrintWriter(arquivo);
         } catch (Throwable t) {
             t.printStackTrace();
@@ -50,5 +56,13 @@ public class Utils {
     public static void criarDiretorioSaida() {
         File saida = new File(getDiretorioSaida());
         saida.mkdirs();
+    }
+
+    public static void removerArquivosEntrada(File[] arquivos) {
+        Arrays.stream(arquivos).forEach(arquivo -> {
+            if(isFormatoValido(arquivo.getName())) {
+                arquivo.delete();
+            }
+        });
     }
 }

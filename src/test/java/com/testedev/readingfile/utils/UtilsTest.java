@@ -20,20 +20,27 @@ public class UtilsTest {
     }
 
     @Test
-    public void existeDiretorioSaida() {
+    public void testExisteDiretorioSaida() {
         File file = new File(Utils.getDiretorioSaida());
         Assert.assertTrue(file.isDirectory());
     }
 
     @Test
-    public void formatoArquivoInvalido() {
-        Assert.assertFalse(Utils.isFormatoValido(".dat"));
+    public void testFormatoArquivoInvalido() {
+        Assert.assertFalse(Utils.isFormatoValido(".csv"));
     }
 
     @Test
-    public void validaArquivoSaida() {
+    public void testValidaArquivoSaida() {
         PrintWriter saida = Utils.getImprimirSaida();
-        String teste = saida.toString();
+        Assert.assertNotNull(saida);
+    }
+
+    @Test
+    public void testRemoverArquivosValidosEntrada() {
+        String entrada = Utils.getDiretorioEntrata();
+        File[] arquivos = Utils.getArquivos(entrada);
+        Utils.removerArquivosEntrada(arquivos);
     }
 
 }
