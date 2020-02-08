@@ -58,9 +58,11 @@ public class Utils {
         saida.mkdirs();
     }
 
-    public static void removerArquivosIn(File[] arquivos) {
+    public static void removerArquivosEntrada(File[] arquivos) {
         Arrays.stream(arquivos).forEach(arquivo -> {
-            arquivo.delete();
+            if(isFormatoValido(arquivo.getName())) {
+                arquivo.delete();
+            }
         });
     }
 }

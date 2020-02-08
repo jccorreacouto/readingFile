@@ -11,17 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.io.File;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -37,15 +33,12 @@ public class FileService {
     @Autowired
     private VendaMapper vendaMapper;
 
-    public ExtratoResponse obterExtratoVendas() {
-        return this.processarExtratoVendas();
-    }
-
     @Scheduled(fixedDelay = 30000)
-    private ExtratoResponse processarExtratoVendas() {
+    public ExtratoResponse processarExtratoVendas() {
 
         ExtratoResponse response = null;
         File[] arquivos = null;
+        long validos = 0L;
 
         try {
             List<VendedorDTO> vendedores = new ArrayList<VendedorDTO>();
@@ -54,6 +47,8 @@ public class FileService {
 
             String entrada = Utils.getDiretorioEntrata();
             arquivos = Utils.getArquivos(entrada);
+
+            validos = Arrays.stream(arquivos).filter(arquivo -> Utils.isFormatoValido(arquivo.getName())).count();
 
             for (File arquivo : arquivos) {
                 if (Utils.isFormatoValido(arquivo.getName())) {
@@ -76,6 +71,8 @@ public class FileService {
                 }
             }
 
+            log.info("Processados na entrada: {}", validos);
+
             if (vendedores.size() > 0 || clientes.size() > 0 || vendas.size() > 0) {
                 this.gerarExtratoVendas(vendedores, clientes, vendas);
                 response = ExtratoResponse.builder().qtdeClientes((long) clientes.size())
@@ -97,7 +94,8 @@ public class FileService {
         }
 
         if(Objects.nonNull(arquivos)) {
-            Utils.removerArquivosIn(arquivos);
+            Utils.removerArquivosEntrada(arquivos);
+            log.info("Removidos da entrada: {}", validos);
         }
 
         return Objects.isNull(response) ? ExtratoResponse.builder().build() : response;

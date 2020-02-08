@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/jccorreacouto/readingfile/badge.svg?branch=develop)](https://coveralls.io/github/jccorreacouto/readingfile?branch=develop)
 
 # Reading File
-Este projeto permite a leitura de arquivos com extensão ``.csv`` localizados no diretório ``/data/in`` do usuário logado (``HOMEPATH``), 
+Este projeto permite a leitura de arquivos com extensão ``.dat`` localizados no diretório ``/data/in`` do usuário logado (``HOMEPATH``), 
 faz a interpretação dos dados e gera, no diretório ``/data/out`` ao final da execução, um arquivo de texto contendo o resultado das informações
 tratadas.
 Neste primeiro momento, o arquivo de entrada contém dados de Vendedores, de Clientes, de Vendas e items da Venda.
@@ -15,19 +15,9 @@ Neste primeiro momento, o arquivo de entrada contém dados de Vendedores, de Cli
 
 ### Notas importantes
 1. Caso os diretórios de entrada e saída não estejam criados, ou tenham sido apagados, a aplicação irá criá-los.
-2. A aplicação, após iniciado o container, está configurada para rodar a cada 5 minutos (ou **300000 milisegundos**), 
+2. A aplicação, após iniciado o container, está configurada para rodar a cada 30 segundos (ou **30000 milisegundos**), 
 tal configuração está anotada na classe [FileService](/src/main/java/com/testedev/readingfile/service/FileService.java), 
-linha 43, com a anotação do Spring **@Scheduled**.
-3. Após iniciado o container, também é possível executar o processo de leitura dos arquivos fazendo uma chamada *GET* 
-para a [localhost](http://localhost:8080/vendas/extrato) onde retorna um *JSON* com os seguintes dados:
-```
-{
-    "qtdeClientes": Long,
-    "qtdeVendedores": Long,
-    "idMaiorVenda": Long,
-    "piorVendedor": String
-}
-```
+linha 40, com a anotação do Spring **@Scheduled**.
 
 ### Possibilidades de melhorias
 1. Criar no arquivo ``application.properties`` as variáveis do sistema para:
