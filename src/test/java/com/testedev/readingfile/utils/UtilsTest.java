@@ -27,13 +27,13 @@ public class UtilsTest {
 
     @Test
     public void formatoArquivoInvalido() {
-        Assert.assertFalse(Utils.isFormatoValido(".dat"));
+        Assert.assertFalse(Utils.isFormatoValido(".csv"));
     }
 
     @Test
     public void validaArquivoSaida() {
         PrintWriter saida = Utils.getImprimirSaida();
-        String teste = saida.toString();
+        Assert.assertNotNull(saida);
     }
 
 }

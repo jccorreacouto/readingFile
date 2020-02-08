@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -40,10 +41,11 @@ public class FileService {
         return this.processarExtratoVendas();
     }
 
-    @Scheduled(fixedDelay = 300000)
+    @Scheduled(fixedDelay = 30000)
     private ExtratoResponse processarExtratoVendas() {
 
         ExtratoResponse response = null;
+        File[] arquivos = null;
 
         try {
             List<VendedorDTO> vendedores = new ArrayList<VendedorDTO>();
@@ -51,7 +53,7 @@ public class FileService {
             List<VendaDTO> vendas = new ArrayList<VendaDTO>();
 
             String entrada = Utils.getDiretorioEntrata();
-            File[] arquivos = Utils.getArquivos(entrada);
+            arquivos = Utils.getArquivos(entrada);
 
             for (File arquivo : arquivos) {
                 if (Utils.isFormatoValido(arquivo.getName())) {
@@ -92,6 +94,10 @@ public class FileService {
 
         } catch (Throwable e) {
             log.error("EXCEÇÃO NÃO TRATADA: " + e.getMessage());
+        }
+
+        if(Objects.nonNull(arquivos)) {
+            Utils.removerArquivosIn(arquivos);
         }
 
         return Objects.isNull(response) ? ExtratoResponse.builder().build() : response;
