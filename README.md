@@ -16,8 +16,15 @@ Neste primeiro momento, o arquivo de entrada contém dados de Vendedores, de Cli
 ### Subindo o projeto
 Para iniciar o container é necessário que o comando ``mvn spring-boot:run`` seja executado na raiz do projeto.
 
-### Cenário
-* [descricao-projeto.pdf](/descricao-projeto.pdf)
+### Arquivo exemplo
+````text
+001ç1234567891234çPedroç50000
+001ç3245678865434çPauloç40000.99
+002ç2345675434544345çJose da SilvaçRural
+002ç2345675433444345çEduardo PereiraçRural
+003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro
+003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çPaulo
+````
 
 ### Notas importantes
 1. Caso os diretórios de entrada e saída não estejam criados, ou tenham sido apagados, a aplicação irá criá-los.
